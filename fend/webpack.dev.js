@@ -15,8 +15,7 @@ module.exports = {
     },
     devtool: 'source-map',
     devServer: {
-      contentBase: './dist', // Serve from the dist directory
-      writeToDisk: true,     // Write files to disk even when serving from memory
+      static: './dist', // Serve from the dist directory
     },
     stats: 'minimal',
     module: {

@@ -1,17 +1,20 @@
 function validateInput() {
-  const nameInput = document.getElementById('name');
+  const articleInput = document.getElementById('article');
 
-  if (nameInput === null) {
+  if (articleInput === null) {
     // Stop if input is null
     return;
   }
 
-  const nameValue = nameInput.value.trim();
+  const articleValue = articleInput.value.trim();
 
-  if (nameValue === '') {
-    alert('Please enter a valid name.'); // Alert user to enter an input
-    nameInput.focus(); // Set focus back to input field and wait for valid input
-  };
+  if (articleValue === '') {
+    alert('Please enter a valid article url or snippet.'); // Alert user to enter an input
+    articleInput.focus(); // Set focus back to input field and wait for valid input
+  } else {
+    alert('Thank you for your article submission');
+    return true;
+  }
 }
 
 export { validateInput }

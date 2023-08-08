@@ -1,4 +1,4 @@
-import { checkForName } from './js/nameChecker'
+import { checkForArticle } from './js/articleChecker'
 import { handleSubmit } from './js/formHandler'
 import { validateInput } from './js/validateInput'
 
@@ -8,10 +8,10 @@ import './styles/footer.scss'
 import './styles/form.scss'
 import './styles/header.scss'
 
-console.log(checkForName);
+console.log(checkForArticle);
 
 alert("I EXIST")
-console.log("CHANGE!!");
+console.log("CHANGE WHAT??");
 
 const form = document.querySelector('form');
 

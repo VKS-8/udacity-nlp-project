@@ -6,17 +6,33 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 module.exports = {
     entry: './src/client/index.js',
     mode: 'development',
+    resolve: {
+      extensions: ['.js']
+    },
+    output: {
+      filename: 'bundle.js',
+      path: path.resolve(__dirname, 'dist'), // Output directory
+    },
     devtool: 'source-map',
-    stats: 'verbose',
+    devServer: {
+      contentBase: './dist', // Serve from the dist directory
+      writeToDisk: true,     // Write files to disk even when serving from memory
+    },
+    stats: 'minimal',
     module: {
         rules: [
             {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                loader: "babel-loader"
+              test: /\.js$/,
+              exclude: /node_modules/,
+              use: {
+                loader: "babel-loader",
+                options: {
+                  presets: ['@babel/preset-env'],
+                },
+              },
             },
             {
-                test: /.scss$/,
+                test: /\.s[ac]ss$/i,
                 use: ['style-loader', 'css-loader', 'sass-loader']
             }
         ]

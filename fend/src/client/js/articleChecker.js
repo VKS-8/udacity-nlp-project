@@ -1,5 +1,5 @@
-import { validateInput } from "./validateInput";
-import { projectData } from "./validateInput";
+const { validateInput } = require("./validateInput");
+const { projectData } = require("./validateInput");
 
 // Global variable
 
@@ -12,5 +12,3 @@ function checkForArticle(formText) {
     return projectData;
   }
 }
-
-export { checkForArticle }

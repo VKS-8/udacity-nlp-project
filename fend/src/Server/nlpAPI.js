@@ -1,10 +1,14 @@
-import { projectData } from '../client/js/validateInput';
+const { projectData } = require('../client/js/validateInput');
 console.log(projectData);
 
+// const dotenv = require('dotenv');
 require('dotenv').config;
 
+const express = require('express');
+const app = express();
+
 // Global variables
-const BASE_URL = 'https://api.meaningcloud.com/sentiment-2.1';
+const BASE_URL = 'https://api.meaningcloud.com/sentiment-2.1/';
 const key = process.env.API_KEY;
 
 app.post('/nlpAPI', async (req, res) => {

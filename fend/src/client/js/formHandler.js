@@ -1,9 +1,7 @@
-import { checkForArticle } from "./articleChecker"
+const articleChecker = require('./articleChecker');
 
   checkIfBrowser();
   // checkIfNode();
-
-
 
   // Check functions when working with node.js
   // Learned from this site:
@@ -83,4 +81,3 @@ import { checkForArticle } from "./articleChecker"
   });
 };
 
-export { handleSubmit };

@@ -1,12 +1,15 @@
 const path = require('path')
 const express = require('express')
 const nlpAPIResponse = require('./nlpAPI.js')
-const dotenv = require('dotenv')
-dotenv.config();
+const cors = require('cors')
+// const dotenv = require('dotenv')
+const port = process.env.PORT || 8080;
 
+require ('dotenv').config();
 const app = express()
-
 app.use(express.static('dist'))
+app.use(cors());
+app.use(dotenv()).config;
 
 console.log(__dirname)
 
@@ -19,7 +22,7 @@ app.get('/', function (req, res) {
 //     console.log('NLP project app listening on port 8080!')
 // })
 
-app.get('/nlpAPI', function (req, res) {
+app.post('/nlpAPI', function (req, res) {
     res.send(nlpAPIResponse)
 })
 

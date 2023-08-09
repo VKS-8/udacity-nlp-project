@@ -11,7 +11,7 @@ import './styles/header.scss'
 console.log(checkForArticle);
 
 alert("I EXIST")
-console.log("CHANGE WHAT??");
+console.log("Remove alert");
 
 const form = document.querySelector('form');
 

@@ -1,9 +1,10 @@
+let projectData = {
+  formText: ''
+}
+
 function validateInput() {
 
   const userInput = document.getElementById('article');
-  let projectData = {
-    formText: ''
-  }
 
   console.log("::: Running checkForArticle :::", userInput);
 
@@ -21,14 +22,6 @@ function validateInput() {
   } else {
     projectData.formText = articleValue; // Store data as an object
     return true;
-  }
-
-
-
-  validateInput();
-
-  if(projectData.includes(formText)) {
-      alert("Thank you for your article submission!")
   }
 }
 

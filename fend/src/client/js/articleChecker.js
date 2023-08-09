@@ -1,8 +1,14 @@
-function checkForArticle(inputText) {
-  console.log("::: Running checkForArticle :::", inputText);
-  let projectData = {}
+import { validateInput } from "./validateInput";
 
-  if(projectData.includes(inputText)) {
+// Global variable
+let projectData = {}
+
+function checkForArticle(formText) {
+  console.log("::: Running checkForArticle :::", formText);
+
+  validateInput();
+
+  if(projectData.includes(formText)) {
       alert("Thank you for your article submission!")
   }
 }

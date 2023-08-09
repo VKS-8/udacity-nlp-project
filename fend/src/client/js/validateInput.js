@@ -25,5 +25,5 @@ function validateInput() {
   }
 }
 
-export { validateInput };
-export { projectData };
+// export { validateInput };
+// export { projectData };

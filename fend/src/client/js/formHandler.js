@@ -1,4 +1,4 @@
-import { checkForArticle } from "./articleChecker"
+import { validateInput } from "./validateInput"
 
   checkIfBrowser();
   // checkIfNode();

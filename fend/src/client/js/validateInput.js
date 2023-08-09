@@ -1,20 +1,34 @@
 function validateInput() {
-  const articleInput = document.getElementById('article');
 
-  if (articleInput === null) {
+  const userInput = document.getElementById('article');
+  let projectData = {
+    formText: ''
+  }
+
+  console.log("::: Running checkForArticle :::", userInput);
+
+  if (userInput === null) {
   // Stop if input is null
     return false;
   }
 
-  const articleValue = articleInput.value.trim();
+  const articleValue = userInput.value.trim();
 
   if (articleValue === '') {
-    alert('Please enter a valid article url or snippet.'); // Alert user to enter an input
-    articleInput.focus(); // Set focus back to input field and wait for valid input
+    alert('Please enter a valid article snippet.'); // Alert user to enter an input
+    userInput.focus(); // Set focus back to input field and wait for valid input
     return false;  // Return false if input is invalid
   } else {
-    projectData.push({formText, articleInput}); // Store data as an object
+    projectData.formText = articleValue; // Store data as an object
     return true;
+  }
+
+
+
+  validateInput();
+
+  if(projectData.includes(formText)) {
+      alert("Thank you for your article submission!")
   }
 }
 

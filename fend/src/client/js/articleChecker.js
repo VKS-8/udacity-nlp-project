@@ -1,7 +1,6 @@
 import { validateInput } from "./validateInput";
 
 // Global variable
-let projectData = {}
 
 function checkForArticle(formText) {
   console.log("::: Running checkForArticle :::", formText);

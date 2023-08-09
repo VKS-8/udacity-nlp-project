@@ -1,12 +1,14 @@
-const { articleChecker } = require('./js/articleChecker')
-const { handleSubmit } = require('./js/formHandler')
-const { validateInput } = require('./js/validateInput')
+const articleChecker = require('./js/articleChecker')
+const handleSubmit = require('./js/formHandler')
+const validateInput = require('./js/validateInput')
 
 require('./styles/resets.scss')
 require('./styles/base.scss')
 require('./styles/footer.scss')
 require('./styles/form.scss')
 require('./styles/header.scss')
+
+
 
 console.log(articleChecker);
 
@@ -18,9 +20,9 @@ const form = document.querySelector('form');
 
 form.addEventListener('submit', (event) => {
   event.preventDefault();
-  // TODO add error handling
+
   // Validate user input
-  const isValid = validateInput();
+  const isValid = validateInput;
 
   if (isValid) {
     // Submit form

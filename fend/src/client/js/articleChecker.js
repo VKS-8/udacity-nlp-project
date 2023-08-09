@@ -1,13 +1,14 @@
 import { validateInput } from "./validateInput";
+import { projectData } from "./validateInput";
 
 // Global variable
 
 function checkForArticle(formText) {
   console.log("::: Running checkForArticle :::", formText);
 
-  validateInput();
+  const isValid = validateInput();
 
-  if(projectData.includes(formText)) {
+  if(isValid && formText in projectData) {
     return projectData;
   }
 }

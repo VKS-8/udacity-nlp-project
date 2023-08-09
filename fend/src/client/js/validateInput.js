@@ -26,3 +26,4 @@ function validateInput() {
 }
 
 export { validateInput };
+export { projectData };

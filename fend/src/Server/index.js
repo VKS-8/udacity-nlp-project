@@ -2,14 +2,13 @@ const path = require('path')
 const express = require('express')
 const nlpAPIResponse = require('./nlpAPI.js')
 const cors = require('cors')
-// const dotenv = require('dotenv')
+const dotenv = require('dotenv')
 const port = process.env.PORT || 8080;
 
-require ('dotenv').config();
+dotenv.config();
 const app = express()
 app.use(express.static('dist'))
 app.use(cors());
-app.use(dotenv()).config;
 
 console.log(__dirname)
 

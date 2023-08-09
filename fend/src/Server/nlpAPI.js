@@ -1,8 +1,8 @@
 const { projectData } = require('../client/js/validateInput');
 console.log(projectData);
 
-// const dotenv = require('dotenv');
-require('dotenv').config;
+const dotenv = require('dotenv');
+dotenv.config();
 
 const express = require('express');
 const app = express();

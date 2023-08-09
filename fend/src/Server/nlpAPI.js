@@ -1,18 +1,16 @@
+import { projectData } from '../client/js/validateInput';
+console.log(projectData);
+
 require('dotenv').config;
 
 // Global variables
 const BASE_URL = 'https://api.meaningcloud.com/sentiment-2.1';
 const key = process.env.API_KEY;
 
-app.post('/', async (req, res) => {
-  const {formText} = req.body;
+app.post('/nlpAPI', async (req, res) => {
+  const {codeSnippet} = req.body;
 
-  // Add params to projectData object
-  projectData.formText = formText;
-
-  console.log(projectData);
-
-  const apiUrl = `${BASE_URL}&key=${key}&txt=${projectData.formText}&url=${projectData.formText}&doc=${projectData.formText}&lang=auto&verbose=y`;
+  const apiUrl = `${BASE_URL}&key=${key}&txt=${codeSnippet}&lang=auto&verbose=y`;
 
   try {
   const response = await fetch(apiUrl);

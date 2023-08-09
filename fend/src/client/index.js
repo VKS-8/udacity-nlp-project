@@ -1,14 +1,14 @@
-import { checkForArticle } from './js/articleChecker'
-import { handleSubmit } from './js/formHandler'
-import { validateInput } from './js/validateInput'
+const { articleChecker } = require('./js/articleChecker')
+const { handleSubmit } = require('./js/formHandler')
+const { validateInput } = require('./js/validateInput')
 
-import './styles/resets.scss'
-import './styles/base.scss'
-import './styles/footer.scss'
-import './styles/form.scss'
-import './styles/header.scss'
+require('./styles/resets.scss')
+require('./styles/base.scss')
+require('./styles/footer.scss')
+require('./styles/form.scss')
+require('./styles/header.scss')
 
-console.log(checkForArticle);
+console.log(articleChecker);
 
 alert("I EXIST")
 console.log("Remove alert");
@@ -18,7 +18,7 @@ const form = document.querySelector('form');
 
 form.addEventListener('submit', (event) => {
   event.preventDefault();
-
+  // TODO add error handling
   // Validate user input
   const isValid = validateInput();
 

@@ -1,5 +1,3 @@
-console.log(projectData);
-
 const dotenv = require('dotenv');
 dotenv.config();
 

@@ -26,7 +26,7 @@
 
     // check what text was put into the form field
     let formText = document.getElementById('article').value
-    checkForArticle(formText)
+    Client.checkForArticle(formText)
 
     console.log("::: Form Submitted :::")
     //   fetch('http://localhost:8080/nlpAPI')

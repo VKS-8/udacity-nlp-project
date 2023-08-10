@@ -10,6 +10,7 @@
     "prepublish": "npm run build-dev",
     "build": "webpack --config webpack.config.js"
   },
+  "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",

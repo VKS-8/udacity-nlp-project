@@ -1,21 +1,31 @@
+// Environment set up
 const dotenv = require('dotenv');
 dotenv.config();
-
+const path = require('path')
 const express = require('express');
 const app = express();
 app.use(express.json())
 
 // Global variables
-const BASE_URL = 'https://api.meaningcloud.com/sentiment-2.1/';
 const key = process.env.API_KEY;
 
+// Post request to api
 app.post('/nlpAPI', async (req, res) => {
-  const {codeSnippet} = req.body;
+  const {articleSnippet} = req.body;
 
-  const apiUrl = `${BASE_URL}&key=${key}&txt=${codeSnippet}&lang=auto&verbose=y`;
+  const options = {
+    method: 'POST',
+    hostname: 'api.meaningcloud.com',
+    path: `/sentiment-2.1?key=${key}&txt=${articleSnippet}&lang=auto&verbose=y`,
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    maxRedirects: 20
+  }
+  const apiUrl = `${BASE_URL}&key=${key}&txt=${articleSnippet}&lang=auto&verbose=y`;
 
   try {
-  const response = await fetch(apiUrl);
+  const response = await fetch(apiUrl, options);
 
   if (!response.ok) {
     throw new Error('API request failed');

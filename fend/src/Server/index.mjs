@@ -1,11 +1,8 @@
-const path = require('path')
 const express = require('express')
-const nlpAPIResponse = require('./nlpAPI.js')
+const dataCentral = require('./dataCentral.mjs')
 const cors = require('cors')
-const dotenv = require('dotenv')
 const port = process.env.PORT || 8080;
 
-dotenv.config();
 const app = express()
 app.use(express.static('dist'))
 app.use(cors());
@@ -17,8 +14,8 @@ app.get('/', function (req, res) {
     res.sendFile('dist/index.html')
 })
 
-app.post('/nlpAPI', function (req, res) {
-    res.send(nlpAPIResponse)
+app.post('/', function (req, res) {
+    res.send(dataCentral)
 })
 
 // designates what port the app will listen to for incoming requests

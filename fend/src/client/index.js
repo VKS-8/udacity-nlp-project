@@ -29,3 +29,9 @@ form.addEventListener('submit', (event) => {
     handleSubmit(event);
   }
 });
+
+export {
+  articleChecker,
+  validateInput,
+  handleSubmit
+}

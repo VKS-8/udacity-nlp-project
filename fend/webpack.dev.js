@@ -11,7 +11,9 @@ module.exports = {
     },
     output: {
       filename: 'bundle.js',
-      path: path.resolve(__dirname, 'dist'), // Output directory
+      path: path.resolve(__dirname, 'dist'), // Output directory,
+      libraryTarget: 'var',
+      library: 'client'
     },
     devtool: 'source-map',
     devServer: {

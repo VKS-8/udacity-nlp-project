@@ -1,4 +1,4 @@
-const articleChecker = require('./articleChecker');
+// const articleChecker = require('./articleChecker');
 
   checkIfBrowser();
   // checkIfNode();

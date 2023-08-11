@@ -19,7 +19,10 @@ const validateInput = document.querySelector('#evaluationForm').addEventListener
     userInput.focus(); // Set focus back to input field and wait for valid input
     return false;  // Return false if input is invalid
   } else {
-    projectData.formText = articleValue; // Store data as an object
+    // TODO set up a switch statement for this that determines input type and sends to userInput object
+    // How do I really need to check for input type, store, and retrieve this data in an object
+    // component efficiently?  What is actually necessary? 
+    userInput.finalInput = articleValue; // Store data as an object
     return true;
   }
 

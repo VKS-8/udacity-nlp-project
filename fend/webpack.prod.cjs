@@ -1,11 +1,11 @@
-const path = require('path')
-const webpack = require('webpack')
-const HtmlWebPackPlugin = require("html-webpack-plugin")
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const path = require('path');
+const { fileURLToPath } = require('url'); // https://codingbeautydev.com/blog/javascript-dirname-is-not-defined-in-es-module-scope/
+const HtmlWebPackPlugin = require ('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
     entry: './src/client/index.js',
-    mode: 'development',
+    mode: 'production', // Change to 'production' for production build
     resolve: {
       extensions: ['.js']
     },
@@ -13,11 +13,10 @@ module.exports = {
       filename: 'bundle.js',
       path: path.resolve(__dirname, 'dist'), // Output directory
     },
-    devtool: 'source-map',
-    devServer: {
-      static: './dist', // Serve from the dist directory
+    stats: {
+      children: true,
     },
-    stats: 'minimal',
+    devtool: process.env.NODE_ENV === 'production' ? 'none' : 'source-map',
     module: {
         rules: [
             {
@@ -42,13 +41,8 @@ module.exports = {
             filename: "./index.html",
         }),
         new CleanWebpackPlugin({
-            // Simulate the removal of files
-            dry: true,
-            // Write Logs to Console
+            cleanOnceBeforeBuildPatterns: ['**/*'], // Clean the entire output directory before each build
             verbose: true,
-            // Automatically remove all unused webpack assets on rebuild
-            cleanStaleWebpackAssets: true,
-            protectWebpackAssets: false
         })
     ]
-}
+};

@@ -1,10 +1,11 @@
-const path = require('path');
-const HtmlWebPackPlugin = require("html-webpack-plugin");
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+import path from 'path';
+import webpack from 'webpack';
+import HtmlWebPackPlugin from 'html-webpack-plugin';
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 
 module.exports = {
     entry: './src/client/index.js',
-    mode: 'production', // Change to 'production' for production build
+    mode: 'development',
     resolve: {
       extensions: ['.js']
     },
@@ -12,7 +13,11 @@ module.exports = {
       filename: 'bundle.js',
       path: path.resolve(__dirname, 'dist'), // Output directory
     },
-    devtool: process.env.NODE_ENV === 'production' ? 'none' : 'source-map',
+    devtool: 'source-map',
+    devServer: {
+      static: './dist', // Serve from the dist directory
+    },
+    stats: 'minimal',
     module: {
         rules: [
             {
@@ -37,8 +42,13 @@ module.exports = {
             filename: "./index.html",
         }),
         new CleanWebpackPlugin({
-            cleanOnceBeforeBuildPatterns: ['**/*'], // Clean the entire output directory before each build
+            // Simulate the removal of files
+            dry: true,
+            // Write Logs to Console
             verbose: true,
+            // Automatically remove all unused webpack assets on rebuild
+            cleanStaleWebpackAssets: true,
+            protectWebpackAssets: false
         })
     ]
-};
+}

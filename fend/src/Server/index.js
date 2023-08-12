@@ -8,7 +8,7 @@ const port = 8080;
 const app = express();
 
 let projectData = {
-  "server": "can you see me?"
+  "server": "Can you see me?"
 };
 
 // app.use(express()); COMMENTED this out because chatGPT said the following so testing:

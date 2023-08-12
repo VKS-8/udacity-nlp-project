@@ -13,7 +13,6 @@ function checkForName(inputText) {
     alert('Please enter a valid name.'); // Alert user to enter an input
     nameInput.focus(); // Set focus back to input field and wait for valid input
   };
-
 }
 
 export { checkForName }

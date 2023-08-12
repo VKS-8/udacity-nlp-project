@@ -5,6 +5,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 
 module.exports = {
@@ -15,7 +16,10 @@ module.exports = {
       path: path.resolve(__dirname, 'dist'), // Output directory
     },
     optimization: {
-      minimizer: [new TerserPlugin({}), new OptimizeCSSAssetsPlugin({})]
+      minimizer: [
+        new TerserPlugin({}),
+        new OptimizeCSSAssetsPlugin({})
+      ]
     },
     module: {
         rules: [
@@ -52,6 +56,6 @@ module.exports = {
       new MiniCssExtractPlugin({
         filename: "[name].css"
       }),
-      // new WorkboxPlugin.GenerateSW()
+      new WorkboxPlugin.GenerateSW()
     ]
 }

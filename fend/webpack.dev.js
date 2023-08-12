@@ -8,6 +8,15 @@ module.exports = {
     mode: 'development',
     devtool: 'source-map',
     stats: 'verbose',
+    output: {
+      filename: 'bundle.js',
+      path: path.resolve(__dirname, 'dist'), // Output directory
+    },
+    devtool: 'source-map',
+    devServer: {
+      static: './dist', // Serve from the dist directory
+    },
+    stats: 'minimal',
     module: {
         rules: [
             {

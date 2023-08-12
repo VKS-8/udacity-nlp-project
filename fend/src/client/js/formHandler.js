@@ -1,4 +1,4 @@
-import { checkForName } from "./client/js/nameChecker"
+import { checkForName } from "./nameChecker"
 
 function handleSubmit(event) {
   event.preventDefault()

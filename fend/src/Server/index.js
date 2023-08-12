@@ -22,16 +22,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static('dist'))
 
+// Set the appropriate MIME type for .scss files
+app.use('*.scss', (req, res, next) => {
+  res.type('text/css');
+  next();
+});
+
 console.log(__dirname)
 
 app.get('/', function (req, res) {
     res.sendFile('dist/index.html')
     // res.sendFile(path.resolve('src/client/views/index.html'))
-})
-
-// designates what port the app will listen to for incoming requests
-app.listen(8080, function () {
-    console.log('Example app listening on port 8080!')
 })
 
 app.get('/test', function (req, res) {
@@ -91,7 +92,7 @@ app.post('/', async (req, res) => {
 }
 });
 
-// Setup Server
+// designates what port the app will listen to for incoming requests
 app.listen(port, "0.0.0.0", () => {
   console.log(`Server running on http://localhost:${port}`);
 });

@@ -16,7 +16,7 @@ form.addEventListener('submit', (event) => {
   event.preventDefault();
 
   // Validate user input
-  const isValid = validateInput();
+  const isValid = checkForName();
 
   if (isValid) {
     // Submit form

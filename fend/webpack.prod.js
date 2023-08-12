@@ -3,7 +3,7 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+// const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const WorkboxPlugin = require('workbox-webpack-plugin');
 
@@ -18,7 +18,7 @@ module.exports = {
     optimization: {
       minimizer: [
         new TerserPlugin({}),
-        new OptimizeCSSAssetsPlugin({})
+        new CssMinimizerPlugin({})
       ]
     },
     module: {

@@ -1,9 +1,8 @@
-const mockAPIResponse = require('./mockAPI.js')
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 require('dotenv').config();
-const port = 5501
+const port = 8080;
 
 // Start an instance of the express app; must be above the app.use expressions
 const app = express();
@@ -85,11 +84,10 @@ app.post('/', async (req, res) => {
   console.log('Sending response from the server: ', projectData);
   res.json(projectData);
   } catch (error) {
-
-  // Handle errors
+    // Handle errors
   console.error('Error making request to API', error);
   res.status(500).json({ error: "Failed to fetch data from API" });
-}
+  }
 });
 
 // designates what port the app will listen to for incoming requests

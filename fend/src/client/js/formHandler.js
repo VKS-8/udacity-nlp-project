@@ -1,4 +1,4 @@
-import { checkForName } from "./nameChecker"
+const checkForName = ('./nameChecker')
 
 function handleSubmit(event) {
   event.preventDefault()

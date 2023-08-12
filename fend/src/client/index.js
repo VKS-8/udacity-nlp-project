@@ -1,5 +1,5 @@
-import { checkForName } from './js/nameChecker'
-import { handleSubmit } from './js/formHandler'
+const checkForName = require ('./js/nameChecker')
+const handleSubmit = require ('./js/formHandler')
 
 import './styles/resets.scss'
 import './styles/base.scss'

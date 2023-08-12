@@ -1,4 +1,4 @@
-const checkForName = require('./nameChecker');
+import { checkForName } from './nameChecker';
 
 function handleSubmit(event) {
   event.preventDefault()
@@ -8,7 +8,7 @@ function handleSubmit(event) {
   checkForName(formText)
 
   console.log("::: Form Submitted :::")
-  fetch('http://localhost:5501/test')
+  fetch('http://localhost:8080/test')
   .then(res => res.json())
   .then(function(res) {
       document.getElementById('results').innerHTML = res.message

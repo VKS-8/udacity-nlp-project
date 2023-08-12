@@ -1,5 +1,5 @@
-const checkForName = require ('./js/nameChecker')
-const handleSubmit = require ('./js/formHandler')
+import { checkForName } from './js/nameChecker'
+import { handleSubmit } from './js/formHandler'
 
 import './styles/resets.scss'
 import './styles/base.scss'
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const fetchData = async (url = '', data = {}) => {
       console.log(data);
 
-      const response = await fetch('http://localhost:5501/', {
+      const response = await fetch('http://localhost:8080/', {
         method: 'POST',
         credentials: 'same-origin',
         headers: {
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-export {
-  checkForName,
-  handleSubmit
-};
+// export {
+//   checkForName,
+//   handleSubmit
+// };

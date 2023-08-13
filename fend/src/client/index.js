@@ -1,6 +1,5 @@
 import { checkForName } from './js/nameChecker'
 import { handleSubmit } from './js/formHandler'
-import { validateInput } from './js/validateInput'
 
 import './styles/resets.scss'
 import './styles/base.scss'
@@ -8,20 +7,27 @@ import './styles/footer.scss'
 import './styles/form.scss'
 import './styles/header.scss'
 
-console.log(checkForName);
+// Create the Client namespace
+const Client = {};
+
+// Attach functions to the Client namespace
+Client.checkForName = checkForName;
+Client.handleSubmit = handleSubmit;
 
 const form = document.querySelector('form');
-
 
 form.addEventListener('submit', (event) => {
   event.preventDefault();
 
+  // Get input text from form
+  const inputText = document.getElementById('name').value;
+
   // Validate user input
-  const isValid = validateInput();
+  const isValid = checkForName(inputText);
 
   if (isValid) {
     // Submit form
-    handleSubmit(event);
+    Client.handleSubmit(event);
   }
 });
 
@@ -39,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const fetchData = async (url = '', data = {}) => {
       console.log(data);
 
-      const response = await fetch('http://localhost:5501/', {
+      const response = await fetch('http://localhost:8080/', {
         method: 'POST',
         credentials: 'same-origin',
         headers: {
@@ -53,16 +59,17 @@ document.addEventListener('DOMContentLoaded', function() {
           throw new Error('Network response was not ok.');
         }
         const responseData = await response.json();
-        console.log(responseData);
+        // console.log(responseData);
         // return responseData;
 
-        const {userData, subjectivity, scoreTag, agreement} = responseData;
+        // const {userData, subjectivity, scoreTag, agreement} = responseData;
 
-        document.querySelector('#results').innerText = `
-        Subjectivity: ${subjectivity}
-        Polarity: ${scoreTag}
-        Text: ${userData}
-        Agreement: ${agreement}`;
+        document.querySelector('#results').innerText = responseData;
+
+        // `Subjectivity: ${subjectivity}
+        // Polarity: ${scoreTag}
+        // Text: ${userData}
+        // Agreement: ${agreement}`;
 
       } catch (error) {
         console.error('Error:', error.message);
@@ -73,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-export {
-  checkForName,
-  handleSubmit
-};
+// export {
+//   checkForName,
+//   handleSubmit
+// };

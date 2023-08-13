@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Sentiment Analyzer</title>
   <script src="bundle.js" type="module"></script>
 </head>
 <body>
@@ -18,10 +18,11 @@
 
   <main>
       <section>
-          <form id="evalutionForm" action="http://localhost:8080" method="POST" class="" onsubmit="return Client.handleSubmit(event)">
-              <input id="name" type="text" name="input" value="" onblur="nameChecker()" placeholder="Please enter text snippet from an article" required>
-              <input type="submit" name="submit" value="submit" onclick="return handleSubmit(event)" onsubmit="return handleSubmit(event)">
-          </form>
+        <form id="evalutionForm" action="/" method="POST" class="">
+          <label for="name">Enter text to analyze</label>
+          <input id="name" type="text" name="input" value="" placeholder="Please enter text snippet from an article" required>
+          <input type="submit" name="submit" value="submit">
+        </form>
       </section>
 
       <section>
@@ -36,12 +37,12 @@
 
   <script>
     // Check that service workers are supported
-    // if ('serviceWorker' in navigator) {
-    //   // Use the window load event to keep the page load performant
-    //   window.addEventListener('load', () => {
-    //   navigator.serviceWorker.register('/service-worker.js');
-    //   });
-    // }
+    if ('serviceWorker' in navigator) {
+      // Use the window load event to keep the page load performant
+      window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/service-worker.js');
+      });
+    }
   </script>
 
   </body>

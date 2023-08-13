@@ -14,12 +14,18 @@
   "author": "Veronica Johnson",
   "license": "ISC",
   "description": "NLP project4 - Undacity Nanodegree program",
+  "jest": {
+    "testEnvironment": "jsdom"
+  },
   "dependencies": {
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "sass": "^1.64.2"
+    "mini-css-extract-plugin": "^2.7.6",
+    "sass": "^1.64.2",
+    "terser-webpack-plugin": "^5.3.9",
+    "workbox-webpack-plugin": "^7.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.22.10",
@@ -29,6 +35,7 @@
     "css-loader": "^6.8.1",
     "html-webpack-plugin": "^5.5.3",
     "jest": "^29.6.2",
+    "jest-environment-jsdom": "^29.6.2",
     "sass-loader": "^13.3.2",
     "style-loader": "^3.3.3",
     "webpack": "^5.88.2",

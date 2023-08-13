@@ -1,41 +1,33 @@
-const mockAPIResponse = require('./mockAPI.js')
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 require('dotenv').config();
-const port = 5501
+const port = 8080;
 
 // Start an instance of the express app; must be above the app.use expressions
 const app = express();
 
+// Object to store data
 let projectData = {
-  "server": "can you see me?"
+  "server": "Can you see me?"
 };
 
-// app.use(express()); COMMENTED this out because chatGPT said the following so testing:
-// Remove the app.use(express()); line:
-// The express() function returns an instance of the Express application, so you don't need to use it again with app.use().
-
+// Middleware
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+// Entry point
 app.use(express.static('dist'))
 
-console.log(__dirname)
+// Set the appropriate MIME type for .scss files
+app.use('*.scss', (req, res, next) => {
+  res.type('text/css');
+  next();
+});
 
 app.get('/', function (req, res) {
     res.sendFile('dist/index.html')
-    // res.sendFile(path.resolve('src/client/views/index.html'))
-})
-
-// designates what port the app will listen to for incoming requests
-app.listen(8080, function () {
-    console.log('Example app listening on port 8080!')
-})
-
-app.get('/test', function (req, res) {
-    res.send(mockAPIResponse)
 })
 
 // Global variables
@@ -53,21 +45,13 @@ async function getData () {
 // Test api with hard coded params
 getData();
 
-app.get('/', (req, res) => {
-  res.send('Home Page!')
-})
-
-app.get('/fend', (req, res) => {
-  res.send('Welcome to your server');
-});
-
 app.post('/', async (req, res) => {
   const {userData} = req.body;
 
   // Add params to projectData object
   projectData.text = userData;
 
-  const apiUrl = `${baseUrl}txt=${project.text}&lang=auto&verbose=y&key=${apiKey}`;
+  const apiUrl = `${baseUrl}txt=${projectData.text}&lang=auto&verbose=y&key=${apiKey}`;
 
   try {
   const response = await fetch(apiUrl);
@@ -84,14 +68,13 @@ app.post('/', async (req, res) => {
   console.log('Sending response from the server: ', projectData);
   res.json(projectData);
   } catch (error) {
-
-  // Handle errors
+    // Handle errors
   console.error('Error making request to API', error);
   res.status(500).json({ error: "Failed to fetch data from API" });
-}
+  }
 });
 
-// Setup Server
+// designates what port the app will listen to for incoming requests
 app.listen(port, "0.0.0.0", () => {
   console.log(`Server running on http://localhost:${port}`);
 });

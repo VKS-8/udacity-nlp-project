@@ -7,16 +7,23 @@ import './styles/footer.scss'
 import './styles/form.scss'
 import './styles/header.scss'
 
-console.log(checkForName);
+// Create the Client namespace
+const Client = {};
+
+// Attach functions to the Client namespace
+Client.checkForName = checkForName;
+Client.handleSubmit = handleSubmit;
 
 const form = document.querySelector('form');
-
 
 form.addEventListener('submit', (event) => {
   event.preventDefault();
 
+  // Get input text from form
+  const inputText = document.getElementById('name-input').value;
+
   // Validate user input
-  const isValid = checkForName();
+  const isValid = checkForName(inputText);
 
   if (isValid) {
     // Submit form

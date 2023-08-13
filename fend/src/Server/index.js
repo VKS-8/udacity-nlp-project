@@ -15,7 +15,7 @@ let projectData = {
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Entry point
 app.use(express.static('dist'))
@@ -34,14 +34,15 @@ app.get('/', function (req, res) {
 const apiKey = process.env.API_KEY;
 const baseUrl = 'https://api.meaningcloud.com/sentiment-2.1?';
 
+// TODO move to a test module if it's really needed
 // This hard coded api url does fetch the sentiment data object from meaningcloud api
-async function getData () {
-  const response = await fetch(`${baseUrl}txt=I'm so glad to see you!&lang=auto&verbose=y&key=${apiKey}`);
-  const testData = await response.json();
+// async function getData () {
+//   const response = await fetch(`${baseUrl}txt=I'm so glad to see you!&lang=auto&verbose=y&key=${apiKey}`);
+//   const testData = await response.json();
   // console.log(testData);
-}
+// }
 // Test api with hard coded params
-getData();
+// getData();
 
 app.post('/', async (req, res) => {
   console.log(req.body);

@@ -22,8 +22,8 @@
 
   <main>
       <section>
-          <form id="evalutionForm" action="/" method="POST" class="" onsubmit="return Client.handleSubmit(event)">
-              <input id="name" type="text" name="input" value="" onblur="nameChecker()" placeholder="Please enter text snippet from an article">
+          <form id="evalutionForm" action="http://localhost:8080" method="POST" class="" onsubmit="return Client.handleSubmit(event)">
+              <input id="name" type="text" name="input" value="" onblur="nameChecker()" placeholder="Please enter text snippet from an article" required>
               <input type="submit" name="submit" value="submit" onclick="return handleSubmit(event)" onsubmit="return handleSubmit(event)">
           </form>
       </section>

@@ -26,9 +26,9 @@ app.use('*.scss', (req, res, next) => {
   next();
 });
 
-// app.get('/', function (req, res) {
-//     res.sendFile('dist/index.html')
-// })
+app.get('/', function (req, res) {
+    res.sendFile('dist/index.html')
+})
 
 // Global variables
 const apiKey = process.env.API_KEY;
@@ -51,7 +51,7 @@ app.post('/', async (req, res) => {
   // Add params to projectData object
   projectData.text = userData;
 
-  const apiUrl = `${baseUrl}txt=${project.text}&lang=auto&verbose=y&key=${apiKey}`;
+  const apiUrl = `${baseUrl}txt=${projectData.text}&lang=auto&verbose=y&key=${apiKey}`;
 
   try {
   const response = await fetch(apiUrl);

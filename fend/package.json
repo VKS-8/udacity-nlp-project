@@ -14,6 +14,9 @@
   "author": "Veronica Johnson",
   "license": "ISC",
   "description": "NLP project4 - Undacity Nanodegree program",
+  "jest": {
+    "testEnvironment": "jsdom"
+  },
   "dependencies": {
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",

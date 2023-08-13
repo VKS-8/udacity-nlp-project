@@ -4,6 +4,7 @@ function checkForName(inputText) {
 
   if (nameInput === null) {
     // Stop if input is null
+    console.log('nameInput is null');
     return;
   }
 

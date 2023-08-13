@@ -26,9 +26,9 @@ app.use('*.scss', (req, res, next) => {
   next();
 });
 
-app.get('/', function (req, res) {
-    res.sendFile('dist/index.html')
-})
+// app.get('/', function (req, res) {
+//     res.sendFile('dist/index.html')
+// })
 
 // Global variables
 const apiKey = process.env.API_KEY;

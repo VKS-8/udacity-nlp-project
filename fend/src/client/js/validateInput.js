@@ -1,9 +1,4 @@
 function validateInput() {
-  const form = document.querySelector('form');
-
-  form.addEventListener('submit', (event) => {
-    event.preventDefault();
-
     // Get input text from form
     const inputText = document.getElementById('name').value;
 
@@ -12,9 +7,8 @@ function validateInput() {
 
     if (isValid) {
       // Submit form
-      Client.handleSubmit(event);
+      Client.handleSubmit();
     }
-  });
 }
 
 export { validateInput };

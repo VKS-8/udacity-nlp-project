@@ -46,6 +46,7 @@ async function getData () {
 getData();
 
 app.post('/', async (req, res) => {
+  console.log(req.body);
   const {userData} = req.body;
 
   // Add params to projectData object

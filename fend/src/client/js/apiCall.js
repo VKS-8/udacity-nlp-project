@@ -1,8 +1,8 @@
 function callAPI() {
   // Used chatGPT to determine how to set up proper parameters from form to
   // post to server
-  document.getElementById('evaluationForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
+  // document.getElementById('evaluationForm').addEventListener('submit', async (e) => {
+  //   e.preventDefault();
 
     const formData = new FormData(e.target);
     const userData = Object.fromEntries(formData.entries());
@@ -42,7 +42,6 @@ function callAPI() {
       }
     }
     fetchData('/', userData);
-  });
-}
+  }
 
 export { callAPI };

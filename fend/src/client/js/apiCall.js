@@ -28,12 +28,12 @@ function callAPI() {
           throw new Error('Network response was not ok.');
         }
         const apiResponseData = await response.json();
-        // console.log(responseData);
+        // console.log(apiResponseData);
         // return responseData;
 
         // const {userData, subjectivity, scoreTag, agreement} = apiResponseData;
 
-        document.querySelector('#results').innerText = apiResponseData;
+        document.querySelector('#results').innerText = `${apiResponseData}`;
 
         // `Subjectivity: ${subjectivity}
         // Polarity: ${scoreTag}

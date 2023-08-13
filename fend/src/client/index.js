@@ -33,11 +33,11 @@ import './styles/header.scss'
 // }
 
 document.addEventListener('DOMContentLoaded', function() {
-  const form = document.querySelector('form');
+  const form = document.getElementById('evaluationForm');
 
-  document.getElementById('evaluationForm').addEventListener('submit', async (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    
+
     Client.validateInput();
   })
 

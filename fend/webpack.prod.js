@@ -14,6 +14,8 @@ module.exports = {
     output: {
       filename: 'bundle.js',
       path: path.resolve(__dirname, 'dist'), // Output directory
+      libraryTarget: 'var',
+      library: 'Client'
     },
     optimization: {
       minimizer: [

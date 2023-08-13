@@ -7,18 +7,17 @@ const port = 8080;
 // Start an instance of the express app; must be above the app.use expressions
 const app = express();
 
+// Object to store data
 let projectData = {
   "server": "Can you see me?"
 };
 
-// app.use(express()); COMMENTED this out because chatGPT said the following so testing:
-// Remove the app.use(express()); line:
-// The express() function returns an instance of the Express application, so you don't need to use it again with app.use().
-
+// Middleware
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+// Entry point
 app.use(express.static('dist'))
 
 // Set the appropriate MIME type for .scss files
@@ -27,15 +26,8 @@ app.use('*.scss', (req, res, next) => {
   next();
 });
 
-console.log(__dirname)
-
 app.get('/', function (req, res) {
     res.sendFile('dist/index.html')
-    // res.sendFile(path.resolve('src/client/views/index.html'))
-})
-
-app.get('/test', function (req, res) {
-    res.send(mockAPIResponse)
 })
 
 // Global variables
@@ -52,14 +44,6 @@ async function getData () {
 
 // Test api with hard coded params
 getData();
-
-app.get('/', (req, res) => {
-  res.send('Home Page!')
-})
-
-app.get('/fend', (req, res) => {
-  res.send('Welcome to your server');
-});
 
 app.post('/', async (req, res) => {
   const {userData} = req.body;

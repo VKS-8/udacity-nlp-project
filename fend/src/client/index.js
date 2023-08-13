@@ -20,14 +20,14 @@ form.addEventListener('submit', (event) => {
   event.preventDefault();
 
   // Get input text from form
-  const inputText = document.getElementById('name-input').value;
+  const inputText = document.getElementById('name').value;
 
   // Validate user input
   const isValid = checkForName(inputText);
 
   if (isValid) {
     // Submit form
-    handleSubmit(event);
+    Client.handleSubmit(event);
   }
 });
 
@@ -59,16 +59,17 @@ document.addEventListener('DOMContentLoaded', function() {
           throw new Error('Network response was not ok.');
         }
         const responseData = await response.json();
-        console.log(responseData);
+        // console.log(responseData);
         // return responseData;
 
-        const {userData, subjectivity, scoreTag, agreement} = responseData;
+        // const {userData, subjectivity, scoreTag, agreement} = responseData;
 
-        document.querySelector('#results').innerText = `
-        Subjectivity: ${subjectivity}
-        Polarity: ${scoreTag}
-        Text: ${userData}
-        Agreement: ${agreement}`;
+        document.querySelector('#results').innerText = responseData;
+
+        // `Subjectivity: ${subjectivity}
+        // Polarity: ${scoreTag}
+        // Text: ${userData}
+        // Agreement: ${agreement}`;
 
       } catch (error) {
         console.error('Error:', error.message);

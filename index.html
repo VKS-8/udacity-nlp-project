@@ -1,0 +1,7 @@
+<!doctype html><html lang="en" dir="ltr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Sentiment Analyzer</title><script src="bundle.js" type="module"></script><script defer="defer" src="bundle.js"></script><link href="main.css" rel="stylesheet"></head><body><header><div class="">Logo</div><div class="">navigation</div></header><main><section><form id="evalutionForm" action="/" method="POST" class=""><label for="text">Enter text to analyze</label> <input id="text" name="text" value="" placeholder="Please enter text snippet from an article" required> <input type="submit" name="submit" value="submit"></form></section><section><strong>Form Results:</strong><div id="results"></div></section></main><footer><p>This is a footer</p></footer><script>// Check that service workers are supported
+    if ('serviceWorker' in navigator) {
+      // Use the window load event to keep the page load performant
+      window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/service-worker.js');
+      });
+    }</script></body></html>

@@ -1,19 +1,20 @@
 function checkForName(inputText) {
   console.log("::: Running checkForName :::", inputText);
-  const nameInput = document.getElementById('name');
 
-  if (nameInput === null) {
+  if (inputText === null) {
     // Stop if input is null
-    console.log('nameInput is null');
-    return;
-  }
+    console.log('Input is null');
+    } else {
 
-  const nameValue = nameInput.value.trim();
+      const nameValue = inputText.value.trim();
 
-  if (nameValue === '') {
-    alert('Please enter a valid name.'); // Alert user to enter an input
-    nameInput.focus(); // Set focus back to input field and wait for valid input
-  };
+      if (nameValue === '') {
+        alert('Please enter a valid name.'); // Alert user to enter an input
+        inputText.focus(); // Set focus back to input field and wait for valid input
+      } else {
+        return isValid;
+      };
+    };
 }
 
 export { checkForName }

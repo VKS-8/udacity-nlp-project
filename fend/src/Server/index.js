@@ -34,24 +34,23 @@ app.get('/', function (req, res) {
 const apiKey = process.env.API_KEY;
 const baseUrl = 'https://api.meaningcloud.com/sentiment-2.1?';
 
-// This hard coded api url does fetch the weather data object from open weather map
+// This hard coded api url does fetch the sentiment data object from meaningcloud api
 async function getData () {
-  const response = await fetch(`${baseUrl}txt=I've been waiting for you!&lang=auto&verbose=y&key=${apiKey}`);
-  const responseData = await response.json();
-  console.log(responseData);
-  return responseData;
+  const response = await fetch(`${baseUrl}txt=I'm so glad to see you!&lang=auto&verbose=y&key=${apiKey}`);
+  const testData = await response.json();
+  // console.log(testData);
 }
-
 // Test api with hard coded params
 getData();
 
 app.post('/', async (req, res) => {
-  const {userData} = req.body;
+  console.log(req.body);
+  const {input} = req.body;
 
   // Add params to projectData object
-  projectData.text = userData;
+  // projectData.text = input;
 
-  const apiUrl = `${baseUrl}txt=${projectData.text}&lang=auto&verbose=y&key=${apiKey}`;
+  const apiUrl = `${baseUrl}txt=${encodeURIComponent(input)}&lang=auto&verbose=y&key=${apiKey}`;
 
   try {
   const response = await fetch(apiUrl);
@@ -61,12 +60,16 @@ app.post('/', async (req, res) => {
   }
 
   const data = await response.json();
-  console.log(data);
-    projectData.subjectivity = data.subjectivity;
-    projectData.polarity = data.sentence_list[0].score_tag;
-    projectData.agreement = data.sentence_list[0].agreement;
-  console.log('Sending response from the server: ', projectData);
-  res.json(projectData);
+  // console.log(data);
+
+  // const responseData = {
+  //   text: data.text,
+  //   subjectivity: data.subjectivity,
+  //   polarity: data.sentence_list[0].score_tag,
+  //   agreement: data.sentence_list[0].agreement,
+  // }
+  console.log('Sending response from the server: ', data);
+  res.json(data);
   } catch (error) {
     // Handle errors
   console.error('Error making request to API', error);

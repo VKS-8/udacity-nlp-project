@@ -1,6 +1,5 @@
 function checkForName(inputText) {
   console.log("::: Running checkForName :::", inputText);
-  // const nameInput = document.getElementById('name');
 
   if (inputText === null) {
     // Stop if input is null

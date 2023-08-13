@@ -33,8 +33,13 @@ import './styles/header.scss'
 // }
 
 document.addEventListener('DOMContentLoaded', function() {
+  const form = document.querySelector('form');
 
-  Client.validateInput();
+  document.getElementById('evaluationForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    Client.validateInput();
+  })
 
   // // Used chatGPT to determine how to set up proper parameters from form to
   // // post to server

@@ -6,6 +6,7 @@ function callAPI() {
 
     const formData = new FormData(e.target);
     const userData = Object.fromEntries(formData.entries());
+    console.log(userData);
 
     const fetchData = async (url = '', data = {}) => {
       console.log(data);
@@ -13,9 +14,12 @@ function callAPI() {
       const response = await fetch('http://localhost:8080/', {
         method: 'POST',
         credentials: 'same-origin',
+        hostname: 'api.meaningcloud.com',
+        redirect: follow,
         headers: {
           'Content-Type': 'application/json',
         },
+        mode: 'cors',
         body: JSON.stringify(data),
       });
 
@@ -23,13 +27,13 @@ function callAPI() {
         if (!response.ok) {
           throw new Error('Network response was not ok.');
         }
-        const responseData = await response.json();
+        const apiResponseData = await response.json();
         // console.log(responseData);
         // return responseData;
 
-        // const {userData, subjectivity, scoreTag, agreement} = responseData;
+        // const {userData, subjectivity, scoreTag, agreement} = apiResponseData;
 
-        document.querySelector('#results').innerText = responseData;
+        document.querySelector('#results').innerText = apiResponseData;
 
         // `Subjectivity: ${subjectivity}
         // Polarity: ${scoreTag}

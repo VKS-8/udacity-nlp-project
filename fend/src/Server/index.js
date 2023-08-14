@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 require('dotenv').config();
@@ -18,7 +19,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Entry point
-app.use(express.static('dist'))
+app.use(express.static(path.join(__dirname,'dist')));
+app.get('/service-worker.js', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'dist', 'service-worker.js'));
+});
 
 // Set the appropriate MIME type for .scss files
 app.use('*.scss', (req, res, next) => {
